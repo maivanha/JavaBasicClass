@@ -12,4 +12,8 @@ public class Dog extends Animal{
 	public Dog(int tuoi, String ten, String moiTruongSong, int tuoiTrungBinh) {
 		super(tuoi, ten, moiTruongSong, tuoiTrungBinh);
 	}
+	
+	public void monAnUaThich() {
+		System.out.println("Thich gam xuong");
+	}
 }
