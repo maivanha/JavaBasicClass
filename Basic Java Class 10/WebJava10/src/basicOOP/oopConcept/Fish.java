@@ -43,4 +43,11 @@ public class Fish extends Animal {
 		if(soSanh > 0) System.out.println(this.getTen() + " gia hon " + cat.getTen());
 		else System.out.println(cat.getTen() + " gia hon " + this.getTen());
 	}
+	
+	/*public void soSanh(Animal animal) {
+		int soSanh = this.getTuoi() * animal.getTuoiTrungBinh() - 
+							this.getTuoiTrungBinh() * animal.getTuoi();
+		if(soSanh > 0) System.out.println(this.getTen() + " gia hon " + animal.getTen());
+		else System.out.println(animal.getTen() + " gia hon " + this.getTen());
+	}*/
 }

@@ -36,6 +36,18 @@ public class Animal {
 		message.append("###########################################################\n");
 		return message.toString();
 	}
+	
+	/**
+	 * Hàm so sánh 02 objects cùng kiểu Animal với nhau xem
+	 * con nào già hơn con nào.
+	 * @param animal
+	 */
+	public void soSanh(Animal animal) {
+		int soSanh = this.getTuoi() * animal.getTuoiTrungBinh() - 
+							this.getTuoiTrungBinh() * animal.getTuoi();
+		if(soSanh > 0) System.out.println(this.getTen() + " gia hon " + animal.getTen());
+		else System.out.println(animal.getTen() + " gia hon " + this.getTen());
+	}
 
 	public int getTuoi() {
 		return tuoi;

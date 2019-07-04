@@ -41,5 +41,13 @@ public class MainClass {
 		// So sánh tuổi của các animal
 		fish.soSanh(dog);
 		fish.soSanh(cat);
+		
+		// So sánh sử dụng animal và ép kiểu object
+		fish.soSanh(aDog);
+		
+		// so sánh sử dụng hàm của lớp Animal:
+		dog.soSanh(cat);
+		dog.soSanh(aDog);
+		
 	}
 }
