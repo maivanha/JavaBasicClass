@@ -1,6 +1,6 @@
 package basicOOP.oopConcept;
 
-public class Animal {
+public abstract class Animal implements IAnimal {
 	private int tuoi;
 	private int tuoiTrungBinh;
 	private String moiTruongSong;
@@ -29,6 +29,7 @@ public class Animal {
 	
 	public String toString() {
 		StringBuilder message = new StringBuilder();
+		message.append(hienThiThongTin());
 		message.append("Ten: ").append(this.ten).append("\n");
 		message.append("Tuoi: ").append(this.tuoi).append("\n");
 		message.append("Moi truong song: ").append(this.moiTruongSong).append("\n");

@@ -43,6 +43,12 @@ public class Fish extends Animal {
 		if(soSanh > 0) System.out.println(this.getTen() + " gia hon " + cat.getTen());
 		else System.out.println(cat.getTen() + " gia hon " + this.getTen());
 	}
+
+	@Override
+	public String hienThiThongTin() {
+		// TODO Auto-generated method stub
+		return "Fish's information: \n";
+	}
 	
 	/*public void soSanh(Animal animal) {
 		int soSanh = this.getTuoi() * animal.getTuoiTrungBinh() - 

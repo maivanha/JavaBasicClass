@@ -16,4 +16,10 @@ public class Dog extends Animal{
 	public void monAnUaThich() {
 		System.out.println("Thich gam xuong");
 	}
+
+	@Override
+	public String hienThiThongTin() {
+		// TODO Auto-generated method stub
+		return "Dog's information: \n";
+	}
 }

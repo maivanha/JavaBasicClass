@@ -16,6 +16,49 @@ public class ArrayExample {
 		ae.findPrime();
 		ae.findMinOdd();
 		// ae.printArrayUsingIndex();
+		ae.sortArray();
+		ae.findX();
+	}
+	
+	/**
+	 * Sap xep mang theo thu tu tang dan
+	 */
+	public void sortArray() {
+		System.out.println(">>>>>> Mang truoc khi sap xep:\n");
+		this.printArray();
+		
+		// sap xep mang:
+		for(int i=0;i<n-1;i++) {
+			for(int j=i+1;j<n;j++) {
+				if(ar[i]>ar[j]) {
+					int temp = ar[i];
+					ar[i]=ar[j];
+					ar[j]=temp;
+				}
+			}
+		}
+		
+		System.out.println(">>>>>> Mang sau khi sap xep:");
+		this.printArray();
+	}
+
+	public void findX() {
+		System.out.print("Nhap phan tu x: ");
+		int x = sc.nextInt();
+		int m = 0, n = ar.length - 1, l = 0;
+		while (m <= n) {
+			l = (m + n) / 2;
+			
+			if (ar[l] == x) {
+				System.out.print("Tim thay vi tri cua " + x + " tai vi tri" + l);
+				return;
+			} else if (ar[l] < x) {
+				m = l + 1;
+			} else {
+				n = l - 1;
+			}
+		}
+		System.out.println("Khong tim thay phan tu X! ");
 	}
 
 	/**
