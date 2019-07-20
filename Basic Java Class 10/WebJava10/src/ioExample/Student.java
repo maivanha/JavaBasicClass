@@ -10,6 +10,18 @@ public class Student {
 		this.phone = phone;
 		this.year = year;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		StringBuffer sb = new StringBuffer("\nStudent's info:\n");
+		sb.append("StudentCode=").append(StudentCode);
+		sb.append("\nName=").append(Name);
+		sb.append("\nemail=").append(email);
+		sb.append("\nphone=").append(phone);
+		sb.append("\nyear = ").append(year);
+		return sb.toString();
+	}
 
 	public String getStudentCode() {
 		return StudentCode;
