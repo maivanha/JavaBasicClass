@@ -48,6 +48,9 @@ public class CSVReader {
 				phone = aString[3];
 				year  = aString[4];
 				st = new Student(StudentCode, Name, email, phone, year);
+				st.setGold(Integer.parseInt(aString[5]));
+				st.setSilver(Integer.parseInt(aString[6]));
+				st.setBronze(Integer.parseInt(aString[7]));
 				
 				sList.add(st);
 			}

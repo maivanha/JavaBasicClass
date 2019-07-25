@@ -1,7 +1,8 @@
 package ioExample;
 
-public class Student {
+public class Student implements Comparable<Student>{
 	private String StudentCode,Name,email,phone,year;
+	private int gold,silver,bronze;
 
 	public Student(String studentCode, String name, String email, String phone, String year) {
 		StudentCode = studentCode;
@@ -20,6 +21,9 @@ public class Student {
 		sb.append("\nemail=").append(email);
 		sb.append("\nphone=").append(phone);
 		sb.append("\nyear = ").append(year);
+		sb.append("\ngold = ").append(gold);
+		sb.append("\nsilver = ").append(silver);
+		sb.append("\nbronze = ").append(bronze);
 		return sb.toString();
 	}
 
@@ -61,6 +65,35 @@ public class Student {
 
 	public void setYear(String year) {
 		this.year = year;
+	}
+
+	public int getGold() {
+		return gold;
+	}
+
+	public void setGold(int gold) {
+		this.gold = gold;
+	}
+
+	public int getSilver() {
+		return silver;
+	}
+
+	public void setSilver(int silver) {
+		this.silver = silver;
+	}
+
+	public int getBronze() {
+		return bronze;
+	}
+
+	public void setBronze(int bronze) {
+		this.bronze = bronze;
+	}
+
+	@Override
+	public int compareTo(Student s) {
+		return this.getName().compareTo(s.getName());
 	}
 	
 	
