@@ -148,8 +148,15 @@
 					</li>
 				</ul>
 			<%
-			}
+			} else {
 			%>
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="./login.jsp">Đăng nhập</a>
+					</li>
+				</ul>
+			<%
+			}%>
 		</nav>
 		
 		<div class="alert alert-success alert-dismissible fade show">
