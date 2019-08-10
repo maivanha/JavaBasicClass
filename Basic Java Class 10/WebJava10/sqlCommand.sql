@@ -1,10 +1,10 @@
 SHOW DATABASES ;
 
-USE javacb9 ;
+CREATE DATABASE javacb10;
+
+USE javacb10 ;
 
 SHOW TABLES ;
-
-CREATE DATABASE javacb10;
 
 DROP TABLE nhanvien;
 DROP TABLE donhang;
@@ -67,7 +67,8 @@ SELECT * FROM khachhang WHERE tendangnhap = 'khachang1' AND matkhau = SHA2('1234
 
 SELECT * FROM donhang;
 
-SELECT kh.hoten AS 'Họ và tên', kh.diachi AS 'Địac chỉ', kh.dienthoai AS 'ĐT', dh.diachi AS 'Địa chỉ nhận', 
+SELECT kh.hoten AS 'Họ và tên', kh.diachi AS 'Địac chỉ', kh.dienthoai AS 'ĐT', 
+	dh.diachi AS 'Địa chỉ nhận', 
 	dh.dienthoai AS 'ĐT người nhận', dh.tongtien, dh.ngaytao AS 'Ngày đặt hàng'
 	
 	FROM khachhang kh, donhang dh
@@ -76,3 +77,13 @@ SELECT kh.hoten AS 'Họ và tên', kh.diachi AS 'Địac chỉ', kh.dienthoai A
 	
 SELECT * FROM khachhang WHERE hoten LIKE 'Trần%';
 SELECT * FROM khachhang WHERE hoten LIKE '%Văn%';
+
+SELECT * FROM khachhang;
+SELECT * FROM donhang;
+SELECT d.*, k.* FROM khachhang k INNER JOIN donhang d ON k.makh = d.makh;
+
+SELECT * FROM khachhang k FULL OUTER JOIN donhang d ON k.makh = d.makh;
+
+SELECT * FROM khachhang k LEFT OUTER JOIN donhang d ON k.makh = d.makh;
+
+SELECT * FROM khachhang k RIGHT OUTER JOIN donhang d ON k.makh = d.makh;
