@@ -23,6 +23,13 @@
 				<td><input type="password" name="password"></td>
 			</tr>
 			<tr>
+				<td>Bạn là:</td>
+				<td>
+					<input type="radio" name="role" value="client" checked="checked"> Khách <br/>
+					<input type="radio" name="role" value="manager"> Quản trị <br/>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2">
 					<input type="submit" value="Đăng nhập">
 					<input type="reset" value="Nhập lại">

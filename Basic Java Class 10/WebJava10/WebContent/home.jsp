@@ -1,3 +1,4 @@
+<%@page import="model.KhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -133,12 +134,15 @@
 			</form>
 			<%
 			if(session.getAttribute("user") != null){
+				String userName = null;
+				if(session.getAttribute("user") instanceof KhachHang) 
+					userName = ((KhachHang) session.getAttribute("user")).getTenDangNhap();
 			%>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" id="orders"
 							data-toggle="dropdown" href="#">
-							Xin chào <%=session.getAttribute("user") %>
+							Xin chào <%=userName %>
 						</a>
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="#">Thông tin người dùng</a>
