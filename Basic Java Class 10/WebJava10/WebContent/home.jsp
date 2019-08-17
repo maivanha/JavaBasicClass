@@ -137,6 +137,7 @@
 				String userName = null;
 				if(session.getAttribute("user") instanceof KhachHang) 
 					userName = ((KhachHang) session.getAttribute("user")).getTenDangNhap();
+				//else if(session.getAttribute("user") instanceof KhachHang)
 			%>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">
