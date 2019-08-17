@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/home.jsp=UTF-8
+encoding//WebContent/manage/userlist.jsp=UTF-8
 encoding//src/basicOOP/accessModifier/finalExample/FinalExample.java=UTF-8
 encoding//src/basicOOP/accessModifier/finalExample/FinalMethodTest.java=UTF-8
 encoding//src/basicOOP/accessModifier/staticExample/StaticMain.java=UTF-8
@@ -7,3 +9,4 @@ encoding//src/basicOOP/loopExample/ArrayExample.java=UTF-8
 encoding//src/basicOOP/oopConcept/Animal.java=UTF-8
 encoding//src/basicOOP/oopConcept/Fish.java=UTF-8
 encoding//src/basicOOP/oopConcept/MainClass.java=UTF-8
+encoding//src/servletAction/LoginAction.java=UTF-8

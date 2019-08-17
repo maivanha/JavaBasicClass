@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jdbc.DBConnection;
-import model.KhachHang;
 import model.NhanVien;
 public class DAONhanVien {
 	
@@ -87,7 +86,6 @@ public class DAONhanVien {
 		
 		NhanVien nv = nvDao.login("fnv", "123456");
 		System.out.println(nv.getTenDangNhap());
-
 	}
 
 }
