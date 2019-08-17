@@ -1,3 +1,4 @@
+<%@page import="model.NhanVien"%>
 <%@page import="model.KhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -137,7 +138,8 @@
 				String userName = null;
 				if(session.getAttribute("user") instanceof KhachHang) 
 					userName = ((KhachHang) session.getAttribute("user")).getTenDangNhap();
-				//else if(session.getAttribute("user") instanceof KhachHang)
+				else if(session.getAttribute("user") instanceof NhanVien)
+					userName = ((NhanVien) session.getAttribute("user")).getTenDangNhap();
 			%>
 				<ul class="navbar-nav">
 					<li class="nav-item dropdown">

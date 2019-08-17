@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAOKhachHang;
+import dao.DAONhanVien;
 import model.KhachHang;
+import model.NhanVien;
 
 /**
  * Servlet implementation class LoginAction
@@ -43,6 +45,7 @@ public class LoginAction extends HttpServlet {
 		String passWord = request.getParameter("password");
 		String role = request.getParameter("role");
 		System.out.println(userName + "/" + passWord);
+		System.out.println(role);
 		if(role.equals("client")) {
 			DAOKhachHang daoKH = new DAOKhachHang();
 			KhachHang kh;
@@ -60,7 +63,21 @@ public class LoginAction extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else {
-			response.sendRedirect("./login.jsp");
+			DAONhanVien daoNV = new DAONhanVien();
+			NhanVien nv;
+			try {
+				nv = daoNV.login(userName, passWord);
+				if(nv != null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("user", nv);
+					
+					response.sendRedirect("./home.jsp");
+				} else {
+					response.sendRedirect("./login.jsp");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
