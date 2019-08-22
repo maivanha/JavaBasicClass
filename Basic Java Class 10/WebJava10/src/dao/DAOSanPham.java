@@ -12,7 +12,7 @@ import model.SanPham;
 
 public class DAOSanPham {
 	DBConnection dbConnect = new DBConnection();
-	@SuppressWarnings("static-access")
+
 	public List<SanPham> getAllSanPham() throws SQLException{
 		List<SanPham> spList = new ArrayList<SanPham>();
 		
@@ -41,6 +41,7 @@ public class DAOSanPham {
 		
 		return spList;
 	}
+	
 	public void insertSanPham(SanPham sp) throws SQLException {
 		String sql = "insert into sanpham(loai,gianhapve,giabanra,ten, anh, gioithieu, hangsanxua)"
 				+ "values (?, ?,?,?,?,?,?)";
@@ -55,6 +56,7 @@ public class DAOSanPham {
 		
 		preSta.executeUpdate();
 	}
+	
 	public SanPham getSpById(int id) throws SQLException {
 		SanPham sp = null;
 		String sql = "SELECT * FROM sanpham WHERE "
@@ -80,6 +82,7 @@ public class DAOSanPham {
 		}
 		return sp;
 	}
+	
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		DAOSanPham spDao = new DAOSanPham();

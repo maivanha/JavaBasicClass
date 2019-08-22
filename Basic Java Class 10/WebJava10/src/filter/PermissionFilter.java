@@ -20,12 +20,12 @@ import model.NhanVien;
 @WebFilter("/manage/*")
 public class PermissionFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public PermissionFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public PermissionFilter() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see Filter#destroy()
@@ -37,17 +37,19 @@ public class PermissionFilter implements Filter {
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpSession session = ((HttpServletRequest) request).getSession();
 		Object userObj = session.getAttribute("user");
-		if(userObj == null || (userObj instanceof NhanVien) == false) {
+		System.out.println("\n\n\n\n>>>>>> userObject:" + userObj);
+		if (userObj == null || (userObj instanceof NhanVien) == false) {
 			((HttpServletResponse) response).sendRedirect("../login.jsp");
-		} 		
-		
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
+		} else {
+			// pass the request along the filter chain
+			chain.doFilter(request, response);
+		}
 	}
 
 	/**
