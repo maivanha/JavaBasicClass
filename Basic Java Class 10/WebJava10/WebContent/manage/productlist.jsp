@@ -38,8 +38,8 @@ Danh sách sản phẩm
 				<td><%= sp.getAnh()%></td>
 				<td><%= sp.getGioithieu()%></td>
 				<td><fmt:formatNumber value="<%= sp.getGianhapve()%>" type="currency"/></td>
-				<td><%= sp.getGiabanra()%></td>
-				<td><%= sp.getGiamgia()%></td>
+				<td><fmt:formatNumber value="<%= sp.getGiabanra()%>" type="currency"/></td>
+				<td><fmt:formatNumber value="<%= sp.getGiamgia()%>"  type = "NUMBER"/></td>
 				<td><%= sp.getHangsanxua()%></td>		
 			</tr>
 	<%
