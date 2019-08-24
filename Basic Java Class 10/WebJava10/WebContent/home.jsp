@@ -99,7 +99,7 @@
 					<a class="nav-link dropdown-toggle" id="adminFunctions" 
 						data-toggle="dropdown" href="#">Quản trị</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">Danh mục sản phẩm</a>
+						<a class="dropdown-item" href="./manage/productAction">Danh mục sản phẩm</a>
 						<a class="dropdown-item" href="#">Danh mục Loại sản phẩm</a>
 						<a class="dropdown-item" href="#">Danh sách người dùng</a>
 					</div>

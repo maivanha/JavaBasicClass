@@ -14,7 +14,7 @@ public class DBConnection {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			if(connection == null || connection.isClosed())
 				connection = DriverManager.getConnection(connectionString, 
-														"root", "123456");
+														"root", "hamv@MySQL2019");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
