@@ -1,7 +1,9 @@
 <%@page import="model.NhanVien"%>
 <%@page import="model.KhachHang"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="/WEB-INF/MultipleLanguageTag.tld" prefix="ml" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 /* if(session.getAttribute("user") == null )
@@ -89,15 +91,21 @@
 			</a>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="#">Trang chủ</a>
+					<a class="nav-link" href="#">
+						<ml:multipleLanguage>home.title</ml:multipleLanguage>
+					</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Danh sách sản phẩm</a>
+					<a class="nav-link" href="#">
+						<ml:multipleLanguage>home.products</ml:multipleLanguage>
+					</a>
 				</li>
 				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" id="adminFunctions" 
-						data-toggle="dropdown" href="#">Quản trị</a>
+						data-toggle="dropdown" href="#">
+							<ml:multipleLanguage>home.manage</ml:multipleLanguage>
+						</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="./manage/productAction">Danh mục sản phẩm</a>
 						<a class="dropdown-item" href="#">Danh mục Loại sản phẩm</a>
