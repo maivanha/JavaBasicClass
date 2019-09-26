@@ -11,6 +11,8 @@ public class SanPham {
 	private String gioithieu;
 	private String hangsanxua;
 	
+	private int soLuongMua;
+	
 	public SanPham() {
 		
 	}
@@ -97,6 +99,16 @@ public class SanPham {
 	}
 	public void setHangsanxua(String hangsanxua) {
 		this.hangsanxua = hangsanxua;
+	}
+
+
+	public int getSoLuongMua() {
+		return soLuongMua;
+	}
+
+
+	public void setSoLuongMua(int soLuongMua) {
+		this.soLuongMua = soLuongMua;
 	}
 	
 	

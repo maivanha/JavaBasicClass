@@ -195,7 +195,8 @@
 								class="rounded" style="max-height: 200px;"/></div>
 					<div style="text-align: center;"><%=sp.getTen()%></div>
 					<div style="text-align: center;">Gia ban: <%=sp.getGiabanra()%>
-						<button type="button" name="mua">Mua</button></div>
+						<a href="./shoppingCartAction?id=<%=sp.getId()%>">Thêm vào giỏ hàng</a>
+					</div>
 				</div>
 				
 				<%}
