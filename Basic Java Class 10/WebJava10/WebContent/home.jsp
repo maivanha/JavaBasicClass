@@ -1,9 +1,12 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.NhanVien"%>
 <%@page import="model.KhachHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="/WEB-INF/MultipleLanguageTag.tld" prefix="ml" %>
-
+<%@ page import="model.SanPham"%>
+<%@ page import="java.util.List"%>
+<%@ page import="dao.DAOSanPham" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 /* if(session.getAttribute("user") == null )
@@ -48,7 +51,7 @@
 		.foot{grid-area: footer; min-height: 50px;}
 		
 		div{
-			border: 1px solid blue;
+			
 		}
 	</style>
 	
@@ -174,77 +177,30 @@
 			}%>
 		</nav>
 		
-		<div class="alert alert-success alert-dismissible fade show">
-			<button type="button" class="close" data-dismiss="alert">&times;</button>
-			Thông báo cho người dùng
-		</div>
-		
-		<button type="button" class="btn btn-success btn-md disable">Open Alert</button>
-		<button type="button" class="btn btn-outline-success btn-md active">Open Alert</button>
-		
-		<div class="row">
-			<div class="col-sm-4">Column 1</div>
-			<div class="col-sm-4">Column 2</div>
-			<div class="col-sm-4">Column 3</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">Column 1</div>
-			<div class="col-sm-3">Column 2</div>
-			<div class="col-sm-3">Column 3</div>
-			<div class="col-sm-3">Column 4</div>
-		</div>
 		<div>
-			<table class="table  table-striped">
-				<tr>
-					<th>Mã SP</th>
-					<th>Tên Sản phẩm</th>
-					<th>Ảnh sản phẩm</th>
-					<th>Giới thiệu</th>
-					<th>Giá bán</th>
-				</tr>
-				<tr>
-					<td>SP01</td>
-					<td>Nokia 1200</td>
-					<td>
-						<img src="./img/young programmer vs nomarl child.jpg" 
-							class="rounded" style="max-height: 200px;"/>
-					</td>
-					<td>
-						<a href="vnexpress.net">Link</a>
-					</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>SP02</td>
-					<td>iPhone 5SE</td>
-					<td>
-						<img src="./img/young programmer vs nomarl child.jpg" 
-							class="rounded-circle mx-auto d-block" style="max-height: 200px;"/>
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>SP03</td>
-					<td>iPhone 6</td>
-					<td>
-						<img src="./img/young programmer vs nomarl child.jpg" 
-							class="img-thumbnail float-right" style="max-height: 200px;"/>
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>SP04</td>
-					<td>iPhone 6s</td>
-					<td>
-						<img src="./img/i can not understand it for you.jpg" 
-							class="img-thumbnail float-left" style="max-height: 200px;"/>
-					</td>
-					<td></td>
-					<td></td>
-				</tr>
-			</table>
+			
+				<%
+				DAOSanPham daoSP = new DAOSanPham();
+				List<SanPham> splist = new ArrayList<SanPham>();
+				splist = daoSP.getAllSanPham();
+				if(splist != null && splist.size() > 0){
+					SanPham sp = null;
+					for(Object obj : splist){
+						sp = (SanPham) obj;
+				%>
+				
+				
+				<div style="float: left; margin: 10px; border: 1px solid gray;">
+					<div><img src="./img/young programmer vs nomarl child.jpg" 
+								class="rounded" style="max-height: 200px;"/></div>
+					<div style="text-align: center;"><%=sp.getTen()%></div>
+					<div style="text-align: center;">Gia ban: <%=sp.getGiabanra()%>
+						<button type="button" name="mua">Mua</button></div>
+				</div>
+				
+				<%}
+				}%>
+			
 		</div>
 	</div>
 </body>

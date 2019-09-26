@@ -80,20 +80,41 @@ public class DAOSanPham {
 			sp.setGioithieu(rs.getString("gioithieu"));
 			sp.setHangsanxua(rs.getString("hangsanxua"));
 		}
+		System.out.println(sp.getTen());
+		return sp;
+	}
+	
+	public SanPham updateSP(SanPham sp) throws SQLException {
+		String sql = "update sanpham set loai=?,ten=?,gianhapve=?,giabanra=?,giamgia=?,"
+				+ "anh=?,gioithieu=?,hangsanxua=? where id=?";
+		
+		PreparedStatement preSta = dbConnect.getConnection().prepareStatement(sql);
+		preSta.setInt(1, sp.getLoai());
+		preSta.setString(2, sp.getTen());
+		preSta.setInt(3, sp.getGianhapve());
+		preSta.setInt(4, sp.getGiabanra());
+		preSta.setInt(5, sp.getGiamgia());
+		preSta.setString(6, sp.getAnh());
+		preSta.setString(7, sp.getGioithieu());
+		preSta.setString(8, sp.getHangsanxua());
+		preSta.setInt(9, sp.getId());
+		
+		preSta.executeUpdate();
 		return sp;
 	}
 	
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		DAOSanPham spDao = new DAOSanPham();
-		SanPham k = new SanPham(2,1000000,2000000,2000,"Giay","anhgiay","moi","moi" );
-		
-		/*spDao.insertSanPham(k);*/
+		SanPham k = new SanPham(1,2,5000,7800,3000,"IP 123456","anhgiay1","mo1i","moi1" );
+		spDao.updateSP(k);
+		//spDao.insertSanPham(k);
+		System.out.print("them xg");
 		/*for(SanPham sp : spDao.getAllSanPham()) {
 			System.out.println(sp.getTen());
 		}*/
 		
-		SanPham sp = spDao.getSpById(2);
+		/*SanPham sp = spDao.getSpById(2);
 		System.out.println(sp.getLoai());
 		System.out.println(sp.getGianhapve());
 		System.out.println(sp.getGiabanra());
@@ -101,6 +122,6 @@ public class DAOSanPham {
 		System.out.println(sp.getTen());
 		System.out.println(sp.getAnh());
 		System.out.println(sp.getGioithieu());
-		System.out.println(sp.getHangsanxua());
+		System.out.println(sp.getHangsanxua());*/
 	}
 }

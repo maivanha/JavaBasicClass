@@ -25,6 +25,7 @@ Danh sách sản phẩm
 		<th>Giá bán</th>
 		<th>Giảm giá</th>
 		<th>Hãng SX</th>
+		<th></th>
 	</tr>
 	<%
 	if(spList != null && spList.size() > 0){
@@ -32,7 +33,7 @@ Danh sách sản phẩm
 		for(Object obj : spList){
 			sp = (SanPham) obj;%>
 			<tr>
-				<td><%=sp.getId() %></td>
+				<td><%= sp.getId()%></td>
 				<td><%= sp.getLoai()%></td>
 				<td><%= sp.getTen()%></td>
 				<td><%= sp.getAnh()%></td>
@@ -40,7 +41,8 @@ Danh sách sản phẩm
 				<td><fmt:formatNumber value="<%= sp.getGianhapve()%>" type="currency"/></td>
 				<td><fmt:formatNumber value="<%= sp.getGiabanra()%>" type="currency"/></td>
 				<td><fmt:formatNumber value="<%= sp.getGiamgia()%>"  type = "NUMBER"/></td>
-				<td><%= sp.getHangsanxua()%></td>		
+				<td><%= sp.getHangsanxua()%></td>
+				<td><a href="./productAction?id=<%=sp.getId()%>">Sửa</a></td>	
 			</tr>
 	<%
 		}
@@ -51,6 +53,6 @@ Danh sách sản phẩm
 	<%}
 	%>
 </table>
-
+<a href="productform.jsp">Thêm sản phẩm</a>
 </body>
 </html>

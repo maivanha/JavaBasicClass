@@ -28,6 +28,20 @@ public class SanPham {
 		this.gioithieu = gioithieu;
 		this.hangsanxua = hangsanxua;
 	}
+	
+	public SanPham(int id, int loai, int gianhapve, int giabanra, int giamgia, String ten, String anh, String gioithieu,
+			String hangsanxua) {
+		super();
+		this.id = id;
+		this.loai = loai;
+		this.gianhapve = gianhapve;
+		this.giabanra = giabanra;
+		this.giamgia = giamgia;
+		this.ten = ten;
+		this.anh = anh;
+		this.gioithieu = gioithieu;
+		this.hangsanxua = hangsanxua;
+	}
 
 
 	public int getId() {
