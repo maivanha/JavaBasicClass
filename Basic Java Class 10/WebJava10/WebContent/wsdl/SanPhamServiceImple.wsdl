@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://serviceImpl.service" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://serviceImpl.service" xmlns:intf="http://serviceImpl.service" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://serviceImpl.service" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <element name="getSanPham">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSanPhamResponse">
+    <complexType>
+     <sequence>
+      <element name="getSanPhamReturn" type="tns1:SanPham"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="SanPham">
+    <sequence>
+     <element name="anh" nillable="true" type="xsd:string"/>
+     <element name="giabanra" type="xsd:int"/>
+     <element name="giamgia" type="xsd:int"/>
+     <element name="gianhapve" type="xsd:int"/>
+     <element name="gioithieu" nillable="true" type="xsd:string"/>
+     <element name="hangsanxua" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="loai" type="xsd:int"/>
+     <element name="ten" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getSanPhamRequest">
+
+      <wsdl:part element="impl:getSanPham" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getSanPhamResponse">
+
+      <wsdl:part element="impl:getSanPhamResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SanPhamServiceImple">
+
+      <wsdl:operation name="getSanPham">
+
+         <wsdl:input message="impl:getSanPhamRequest" name="getSanPhamRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getSanPhamResponse" name="getSanPhamResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SanPhamServiceImpleSoapBinding" type="impl:SanPhamServiceImple">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getSanPham">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getSanPhamRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getSanPhamResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SanPhamServiceImpleService">
+
+      <wsdl:port binding="impl:SanPhamServiceImpleSoapBinding" name="SanPhamServiceImple">
+
+         <wsdlsoap:address location="http://localhost:8080/WebJava10/services/SanPhamServiceImple"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
