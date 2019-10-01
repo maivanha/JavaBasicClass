@@ -1,8 +1,10 @@
 package servletAction;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import dao.DAOSanPham;
 import model.SanPham;
@@ -74,20 +81,79 @@ public class ProductAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("utf-8");
+
 		// TODO Auto-generated method stub
 		DAOSanPham daoSP = new DAOSanPham();
 		SanPham sp = null;
-		String id = request.getParameter("iD");
-		if (id == null || id.trim().length() < 1) {
 
-			String loaiSP = request.getParameter("loaisanpham");
-			String tenSP = request.getParameter("tensanpham");
-			String giaBan = request.getParameter("giaban");
-			String giaNhap = request.getParameter("gianhap");
-			String giamGia = request.getParameter("giamgia");
-			String anh = request.getParameter("anh");
-			String gioiThieu = request.getParameter("gioithieu");
-			String hangSX = request.getParameter("hangsx");
+		String id = null;//= request.getParameter("iD");
+
+		String loaiSP = null;//= request.getParameter("loaisanpham");
+		String tenSP = null;//= request.getParameter("tensanpham");
+		String giaBan = null;//= request.getParameter("giaban");
+		String giaNhap = null;//= request.getParameter("gianhap");
+		String giamGia = null;//= request.getParameter("giamgia");
+		String anh = null;//= request.getParameter("anh");
+		String gioiThieu = null;//= request.getParameter("gioithieu");
+		String hangSX = null;//= request.getParameter("hangsx");
+
+		FileItemFactory fif = new DiskFileItemFactory();
+		ServletFileUpload sfu = new ServletFileUpload(fif);
+
+		try {
+			List itemList = sfu.parseRequest(request);
+			FileItem fi;
+			for (Object obj : itemList) {
+				fi = (FileItem) obj;
+				if (fi.isFormField()) {
+					switch (fi.getFieldName()) {
+					case "loaisanpham":
+						loaiSP = fi.getString("UTF-8");
+						break;
+					case "tensanpham":
+						tenSP = fi.getString("UTF-8");
+						break;
+					case "giaban":
+						giaBan = fi.getString();
+						break;
+					case "gianhap":
+						giaNhap = fi.getString();
+						break;
+					case "giamgia":
+						giamGia = fi.getString();
+						break;
+					case "gioithieu":
+						gioiThieu = fi.getString();
+						break;
+					case "hangsx":
+						hangSX = fi.getString();
+						break;
+					case "iD":
+						id = fi.getString();
+						break;
+					}
+				} else {
+					String filePath = "/media/maivanha/01D32B0929AA6810/My Projects/JavaBasicClass/"
+							+ "JavaBasicClass/Basic Java Class 10/WebJava10/WebContent/img/sanpham";
+					File uploadFolder = new File(filePath);
+					if (uploadFolder.exists() == false) uploadFolder.mkdirs();
+					String fileName = (new Date().getTime()) + Math.random() + fi.getName();
+					filePath += "/" + fileName;
+					File uploadedFile = new File(filePath);
+					fi.write(uploadedFile);
+					System.out.println(">>>>>> File:" + uploadedFile.getPath());
+					anh = fileName;
+				}
+			}
+
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		if (id == null || id.trim().length() < 1) {
 
 			sp = new SanPham(Integer.parseInt(loaiSP), Integer.parseInt(giaNhap), Integer.parseInt(giaBan),
 					Integer.parseInt(giamGia), tenSP, anh, gioiThieu, hangSX);
@@ -97,29 +163,17 @@ public class ProductAction extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			doGet(request, response);
-
 		} else {
-			String iD = request.getParameter("iD");
-			String loaiSP = request.getParameter("loaisanpham");
-			String tenSP = request.getParameter("tensanpham");
-			String giaBan = request.getParameter("giaban");
-			String giaNhap = request.getParameter("gianhap");
-			String giamGia = request.getParameter("giamgia");
-			String anh = request.getParameter("anh");
-			String gioiThieu = request.getParameter("gioithieu");
-			String hangSX = request.getParameter("hangsx");
-			
-			sp = new SanPham(Integer.parseInt(iD), Integer.parseInt(loaiSP), Integer.parseInt(giaNhap), Integer.parseInt(giaBan),
-					Integer.parseInt(giamGia), tenSP, anh, gioiThieu, hangSX);
+			sp = new SanPham(Integer.parseInt(id), Integer.parseInt(loaiSP), Integer.parseInt(giaNhap),
+					Integer.parseInt(giaBan), Integer.parseInt(giamGia), tenSP, anh, gioiThieu, hangSX);
 			try {
 				daoSP.updateSP(sp);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			doGet(request, response);
 		}
+		doGet(request, response);
 	}
 
 }
