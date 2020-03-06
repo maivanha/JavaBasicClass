@@ -1,21 +1,15 @@
 package util;
 
-import java.net.MalformedURLException;
-import java.net.URL;  
-import javax.xml.namespace.QName;  
-import javax.xml.ws.Service;
+import java.rmi.RemoteException;
 
-import service.SanPhamService;  
+import model.SanPham;
+import service.client.ClientSanPhamServiceImpleProxy;
 
 public class CallWebService {
-	public static void main(String[] args) throws MalformedURLException {
-		URL url = new URL("http://localhost:8080/WebJava10/services/SanPhamServiceImple?wsdl");
-
-		// 1st argument service URI, refer to wsdl document above
-		//2nd argument is service name, refer to wsdl document above  
-		QName qname = new QName("http://serviceImpl.service", "SanPhamServiceImpleService");
-		Service service = Service.create(url, qname);
-		SanPhamService hello = service.getPort(SanPhamService.class);
-		System.out.println(hello.getSanPham(1));
+	public static void main(String[] args) throws RemoteException {
+		ClientSanPhamServiceImpleProxy spServiceProxy = new ClientSanPhamServiceImpleProxy();
+		spServiceProxy.setEndpoint("http://localhost:8080/WebJava10/services/SanPhamServiceImple");
+		SanPham sp = spServiceProxy.getSanPham(3);
+		System.out.println(sp.getId() + "\t" + sp.getTen());
 	}
 }

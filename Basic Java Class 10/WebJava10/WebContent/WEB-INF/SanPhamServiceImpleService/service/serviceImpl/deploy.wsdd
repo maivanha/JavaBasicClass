@@ -13,7 +13,9 @@
       <operation xmlns:operNS="http://serviceImpl.service" xmlns:retNS="http://serviceImpl.service" xmlns:rtns="http://model" name="getSanPham" qname="operNS:getSanPham" returnQName="retNS:getSanPhamReturn" returnType="rtns:SanPham" soapAction="">
         <parameter xmlns:pns="http://serviceImpl.service" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:id" type="tns:int"/>
       </operation>
-      <parameter name="allowedMethods" value="getSanPham"/>
+      <operation xmlns:operNS="http://serviceImpl.service" xmlns:retNS="http://serviceImpl.service" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAllSanPham" qname="operNS:getAllSanPham" returnQName="retNS:getAllSanPhamReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="getAllSanPham getSanPham"/>
 
       <typeMapping xmlns:ns="http://model" qname="ns:SanPham" type="java:model.SanPham" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
   </service>

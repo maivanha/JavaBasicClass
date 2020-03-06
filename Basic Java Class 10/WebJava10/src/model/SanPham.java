@@ -1,6 +1,10 @@
 package model;
 
-public class SanPham {
+import java.io.Serializable;
+
+public class SanPham implements Serializable {
+	private static final long serialVersionUID = 2265925902724958281L;
+	
 	private int id;
 	private int loai;
 	private int gianhapve;
@@ -111,5 +115,9 @@ public class SanPham {
 		this.soLuongMua = soLuongMua;
 	}
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "SanPham:" + this.ten + "\tid:" + this.id + "\n";
+	}
 }

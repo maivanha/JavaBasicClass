@@ -26,7 +26,8 @@
   <ns3:operation name="getSanPham" qname="ns1:getSanPham" returnQName="ns1:getSanPhamReturn" returnType="ns2:SanPham" soapAction="" xmlns:ns1="http://serviceImpl.service" xmlns:ns2="http://model" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
    <ns3:parameter qname="ns1:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
   </ns3:operation>
-  <ns1:parameter name="allowedMethods" value="getSanPham"/>
+  <ns1:operation name="getAllSanPham" qname="ns3:getAllSanPham" returnQName="ns3:getAllSanPhamReturn" returnType="xsd:string" soapAction="" xmlns:ns3="http://serviceImpl.service" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  <ns1:parameter name="allowedMethods" value="getAllSanPham getSanPham"/>
   <ns1:parameter name="typeMappingVersion" value="1.2"/>
   <ns1:parameter name="wsdlPortType" value="SanPhamServiceImple"/>
   <ns1:parameter name="className" value="service.serviceImpl.SanPhamServiceImple"/>
@@ -34,7 +35,7 @@
   <ns1:parameter name="schemaQualified" value="http://model,http://serviceImpl.service"/>
   <ns1:parameter name="wsdlTargetNamespace" value="http://serviceImpl.service"/>
   <ns1:parameter name="wsdlServiceElement" value="SanPhamServiceImpleService"/>
-  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns3:SanPham" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.SanPham" xmlns:ns3="http://model"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns4:SanPham" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:model.SanPham" xmlns:ns4="http://model"/>
  </ns1:service>
  <ns1:service name="AdminService" provider="java:MSG">
   <ns1:parameter name="allowedMethods" value="AdminService"/>

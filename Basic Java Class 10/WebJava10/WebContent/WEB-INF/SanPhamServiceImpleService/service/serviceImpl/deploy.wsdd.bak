@@ -23,7 +23,9 @@
       <operation name="getSanPham" qname="operNS:getSanPham" xmlns:operNS="http://serviceImpl.service" returnQName="retNS:getSanPhamReturn" xmlns:retNS="http://serviceImpl.service" returnType="rtns:SanPham" xmlns:rtns="http://model" soapAction="" >
         <parameter qname="pns:id" xmlns:pns="http://serviceImpl.service" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
       </operation>
-      <parameter name="allowedMethods" value="getSanPham"/>
+      <operation name="getAllSanPham" qname="operNS:getAllSanPham" xmlns:operNS="http://serviceImpl.service" returnQName="retNS:getAllSanPhamReturn" xmlns:retNS="http://serviceImpl.service" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getAllSanPham getSanPham"/>
 
       <typeMapping
         xmlns:ns="http://model"
