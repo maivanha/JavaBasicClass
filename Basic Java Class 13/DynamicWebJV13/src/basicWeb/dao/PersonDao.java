@@ -18,6 +18,24 @@ public class PersonDao {
 		String sql = "delete from persons where id = ?";
 	}
 
+	public Person getPerById(int id)
+			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		MySQLConnection mCon = new MySQLConnection();
+		co = mCon.getCon();
+		String sql = "select * from persons where personId = ?";
+		PreparedStatement ps = co.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			Person p = new Person(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+					rs.getString(7), rs.getString(8));
+			p.setPersonId(rs.getInt("personId"));
+			mCon.closeConnection();
+			return p;
+		}
+		return new Person("", "", "", "", "", "", "");
+	}
+
 	public boolean checkUserName(String userName) {
 		boolean isExisted = false;
 
@@ -26,10 +44,10 @@ public class PersonDao {
 
 	public void save(Person p)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		MySQLConnection mCon = new MySQLConnection();
 		StringBuilder sql = new StringBuilder("insert into persons (lastName,")
 				.append("firstName, address, city, username, password, phone)")
 				.append("values(?,?,?,?,?,SHA2(?, 256),?)");
+		MySQLConnection mCon = new MySQLConnection();
 		co = mCon.getCon();
 		PreparedStatement ps = co.prepareStatement(sql.toString());
 		ps.setString(1, p.getLastName());
@@ -44,11 +62,11 @@ public class PersonDao {
 		mCon.closeConnection();
 	}
 
-	public void update(Person p, String username)
+	public void update(Person p)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		MySQLConnection mCon = new MySQLConnection();
-		StringBuilder sql = new StringBuilder(
-				"update person set lastName = ?, firstName = ?, address = ?, city = ?, password = ?, phone = ? where personId = ?");
+		StringBuilder sql = new StringBuilder("update persons set lastName = ?, firstName = ?, address = ?,")
+				.append(" city = ?, password = ?, phone = ? where personId = ?");
 		co = mCon.getCon();
 		PreparedStatement ps = co.prepareStatement(sql.toString());
 		ps.setString(1, p.getLastName());

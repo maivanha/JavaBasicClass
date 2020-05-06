@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="basicWeb.model.Person"%>
+<jsp:useBean id="userList" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -93,7 +94,7 @@
 					<div style="float: left; width: 60%; border: 1px solid red;
 								margin: 5px; padding: 5px;">
 						
-						<a href="./userinfor.jsp">Thêm mới</a>
+						<a href="./PersonController?userId=0">Thêm mới</a>
 						
 						<table border="1" style="border-collapse: collapse;">
 							<tr>
@@ -101,29 +102,24 @@
 								<th class="tblHeader">Họ tên</th>
 								<th class="tblHeader">Số ĐT</th>
 								<th class="tblHeader">Địa chỉ</th>
-								<th class="tblHeader">Số giao dịch đã thực hiện</th>
+								<th class="tblHeader">#</th>
 							</tr>
+							<%
+							Person per;
+							for(Object obj : userList){
+								per = (Person) obj;
+							%>
 							<tr>
-								<td class="cell">1</td>
-								<td class="cell">Nguyễn Văn A</td>
-								<td class="cell">02316548970</td>
-								<td class="cell">Hà Nội</td>
-								<td class="cell">12</td>
+								<td class="cell"><%= per.getPersonId() %></td>
+								<td class="cell"><%= per.getLastName() + " " + per.getFirstName() %></td>
+								<td class="cell"><%= per.getPhone() %></td>
+								<td class="cell"><%= per.getAddress() %></td>
+								<td class="cell">
+									<a href="./PersonController?userId=<%=per.getPersonId()%>">Edit</a>
+								</td>
 							</tr>
-							<tr>
-								<td class="cell">1</td>
-								<td class="cell">Nguyễn Văn A</td>
-								<td class="cell">02316548970</td>
-								<td class="cell">Hà Nội</td>
-								<td class="cell">12</td>
-							</tr>
-							<tr>
-								<td class="cell">1</td>
-								<td class="cell">Nguyễn Văn A</td>
-								<td class="cell">02316548970</td>
-								<td class="cell">Hà Nội</td>
-								<td class="cell">12</td>
-							</tr>
+							<%
+							} %>
 						</table>
 					</div>
 				</div>
