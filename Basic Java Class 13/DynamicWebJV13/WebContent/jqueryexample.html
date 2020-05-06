@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<title>JQuery Example</title>
+		<script src="./jquery.min.js"></script>
+		<style>
+			.blue {
+				color: blue;
+			}			
+			.importal {
+				font-weight: bold;
+				font-size: 36px;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$("#button1").click(function(){
+					$("#p1").text("New Text").addClass("blue");
+				});
+				
+				$("#button2").click(function(){
+					$("#p2").html("<b>New HTML</b>").toggleClass("importal");
+				});
+				
+				$("#button3").click(function(){
+					$("#inputText").val("New Value");
+				});
+				
+				$("#button4").click(function(){
+					$("#hideMe").css("color", "red").toggle(2000);
+				});
+				
+				$("#hideMe").click(function(){
+					$(this).hide(2000, function(){
+						alert('callback function');
+					});
+				});
+				/*
+				$("#hideMe").mouseenter(function(){
+					alert('MouseEnter');
+				});
+				*/
+				
+				$("#button5").click(function(){
+					$("#animateDiv").animate({left:'250px'}, 2000);
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		<p id="p1">Example 1</p>
+		<p id="p2">Example 2</p>
+		<p id="p3">
+			<input type="text" id="inputText" value="Change">
+		</p>
+		<p id="hideMe" style="border: 1px solid red; height: 50px;">
+			Doan van ban se bi an di
+		</p>
+		<button id="button1">Change Text</button>
+		<button id="button2">Change HTML</button>
+		<button id="button3">Change Value</button>
+		<button id="button4">Hide P</button>
+		<button id="button5">Animate</button>
+		
+		<div id="animateDiv"
+			style="border: 1px solid red; background-color: green; line-height: 100px;
+				color: white; font-weight:bolder;
+				position: absolute; width: 100px; height: 100px;">
+			Animation
+		</div>
+	</body>
+</html>

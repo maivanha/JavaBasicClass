@@ -1,0 +1,146 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Trang chủ</title>
+		<meta charset="UTF-8">
+		<style>
+			.grid-container{
+				display: grid;
+				grid-template-areas:
+					'menu menu menu header header header header header header header'
+					'menu menu menu main main main main main right right'
+					'footer footer footer footer footer footer footer footer right right'
+					'author author author author author author author author author author';
+				grid-gap: 5px;
+				background-color: lightblue;
+				padding: 5px;
+			}
+			
+			.grid-container > div {
+				text-align: center;
+				font-size: 24px;
+				background-color: lightgray;
+			}
+			
+			.gridHeader{grid-area: header;}
+			.leftMenu{grid-area: menu;}
+			.gridBody{grid-area: main;}
+			.rightMenu{grid-area: right;}
+			.gridFooter{grid-area: footer;}
+			.gridAuthor{grid-area: author;}
+			
+			h1{background-color: green; color: red; font-style: italic; font-size: 32px;}
+			p{background-color: green; color: red; font-style: italic; font-size: 32px;}
+			
+			.tblHeader{
+				font-style: tahoma; color: #FF895F; font-size: 24px; 
+				font-weight:bolder; padding: 5px;}
+			.cell{
+				font-style: tahoma; color: black; font-size: 16px;padding: 2px}
+		</style>
+	</head>
+	
+	<body>
+		<!-- <script type="text/javascript">
+			alert('Hello world;');
+		</script> -->
+		
+		<div class="grid-container">
+			<div class="gridHeader">Header</div>
+			<div class="leftMenu">Left Menu</div>
+			<div class="gridBody">
+				<h1>Danh sách khách hàng</h1>
+				<p style="font-style: calibri; background-color: gray; 
+							color: blue; text-decoration: underline;
+							max-width: 1000px;" align="center">
+					Danh sách thông tin chi tiết các khách hàng đã đăng ký tài khoản trên hệ thống
+					cùng với các giao dịch mua hãng thực hiện
+				</p>
+				<div style="float: left; width: 100%; border: 1px solid blue;">
+					<div style="float: left; width: 35%; border: 1px solid red; 
+								margin: 5px; padding: 5px;">
+						Nhóm khách hàng
+						<hr>
+						<table border="1" style="border-collapse: collapse;">
+							<tr>
+								<th class="tblHeader">STT</th>
+								<th class="tblHeader">Tên nhóm</th>
+								<th class="tblHeader">Mô tả ngắn</th>
+								<th class="tblHeader">#</th>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Doanh nghiệp</td>
+								<td class="cell">Mô tả ngắn</td>
+								<td class="cell">#</td>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Bán buôn</td>
+								<td class="cell">Mô tả ngắn</td>
+								<td class="cell">#</td>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Bán lẻ</td>
+								<td class="cell">Mô tả ngắn</td>
+								<td class="cell">#</td>
+							</tr>
+						</table>
+					</div>
+					<div style="float: left; width: 60%; border: 1px solid red;
+								margin: 5px; padding: 5px;">
+						
+						<a href="./userinfor.jsp">Thêm mới</a>
+						
+						<table border="1" style="border-collapse: collapse;">
+							<tr>
+								<th class="tblHeader">STT</th>
+								<th class="tblHeader">Họ tên</th>
+								<th class="tblHeader">Số ĐT</th>
+								<th class="tblHeader">Địa chỉ</th>
+								<th class="tblHeader">Số giao dịch đã thực hiện</th>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Nguyễn Văn A</td>
+								<td class="cell">02316548970</td>
+								<td class="cell">Hà Nội</td>
+								<td class="cell">12</td>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Nguyễn Văn A</td>
+								<td class="cell">02316548970</td>
+								<td class="cell">Hà Nội</td>
+								<td class="cell">12</td>
+							</tr>
+							<tr>
+								<td class="cell">1</td>
+								<td class="cell">Nguyễn Văn A</td>
+								<td class="cell">02316548970</td>
+								<td class="cell">Hà Nội</td>
+								<td class="cell">12</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<span style="clear: both;"></span>
+				<div style="font-family: Arial, font-weight: italic; text-decoration: underline;
+					color: green; background-code: orange; font-size: 32px; text-align: center;
+					width: 1200px;">
+					Spring Web MVC framework cung cấp kiến trúc Model-View-Controller (MVC) 
+					và các thành phần sẵn sàng có thể được sử dụng để phát triển các ứng dụng 
+					web linh hoạt và ít bị phụ thuộc. MVC parttern cho kết quả tách biệt 
+					các khía cạnh khác nhau của ứng dụng (logic đầu vào, logic nghiệp vụ và 
+					logic UI), đồng thời cung cấp một khớp nối lỏng lẻo giữa các yếu tố này.
+				</div>
+			</div>
+			<div class="rightMenu">Right Menu</div>
+			<div class="gridFooter">Footer</div>
+			<div class="gridAuthor">Author</div>
+		</div>
+	</body>
+</html>
