@@ -1,13 +1,9 @@
-<%@page import="basicWeb.model.Person"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
-<jsp:useBean id="editedUser" class="java.lang.Object" scope="request"></jsp:useBean>
 <!-- Chỉ dịnh sử dụng UTF-8 cho request và response để truyền/ nhận dữ liệu dạng UNI-CODE -->
-<%
-	Person person = (Person) editedUser;
-	//request.getAttribute("editedUser");
-%>
 <html>
 <head>
 <title>Câp nhật thông tin tài khoảnn</title>
@@ -145,15 +141,14 @@ body {
 		}
 	</script>
 	<div class="formBorder">
-		<p class="example formHeader">Nhập thông tin người dùng</p>
+		<p class="example formHeader">Nhập thông tin người dùng: ${editedUser.firstName}</p>
 		<h1
 			style="color: blue; border: 1px solid red; padding: 5px; margin: 10px; text-align: center; text-shadow: 2px 2px 5px black;">
 			Cập nhật thông tin tài khoản</h1>
 		<form action="./PersonController" method="post"
 			style="border: 1px solid blue;" name="personForm">
 			<table border="1" style="border-collapse: collapse">
-				<input type="hidden" name="personId"
-					value="<%=person.getPersonId()%>" />
+				<input type="hidden" name="personId" value="${editedUser.personId}" />
 				<tr>
 					<td class="example inputLabel">
 						<div class="batbuoc">Firstname:</div>
@@ -162,7 +157,7 @@ body {
 						onchange="onchangeFunction(this)" onfocus="onfocusFunction(this)"
 						onblur="onblurFunction(this)" style="background-color: yellow;"
 						size="50" type="text" name="firstName"
-						value="<%=person.getFirstName()%>" /></td>
+						value="${editedUser.firstName}" /></td>
 				</tr>
 				<tr>
 					<td class="inputLabel">
@@ -172,7 +167,7 @@ body {
 						onchange="onchangeFunction(this)" onfocus="onfocusFunction(this)"
 						onblur="onblurFunction(this)" type="text"
 						name="lastName" 
-						value="<%=person.getLastName()%>"/></td>
+						value=" ${editedUser.lastName}"/></td>
 				</tr>
 				<tr>
 					<td class="example inputLabel">BirthDay:</td>
@@ -183,14 +178,14 @@ body {
 					<td class="example inputLabel">username:</td>
 					<td><input batbuoc="true" inputName="Tên đăng nhập"
 						onfocus="onfocusFunction(this)" onblur="onblurFunction(this)"
-						type="text" name="username" value="<%=person.getUsername()%>" /></td>
+						type="text" name="username" value="${editedUser.username}" /></td>
 				</tr>
 				<tr>
 					<td class="inputLabel">
 						<div class="batbuoc">PassWord:</div>
 					</td>
 					<td><input batbuoc="true" inputName="Mật khẩu"
-						value="<%=person.getPassword()%>" onfocus="onfocusFunction(this)"
+						value="${editedUser.password}" onfocus="onfocusFunction(this)"
 						onblur="onblurFunction(this)" id="password" maxlength="20"
 						size="22" type="password" name="passWord" /></td>
 				</tr>
@@ -211,7 +206,7 @@ body {
 				<tr>
 					<td class="inputLabel">Tỉnh/ Thành phố:</td>
 					<td><input type="text" name="city"
-						value="<%= person.getCity() %>"></td>
+						value="${editedUser.city}"></td>
 				</tr>
 				<!-- <tr>
 					<td class="inputLabel">Tỉnh/ Thành phố:</td>
@@ -224,7 +219,7 @@ body {
 				</tr> -->
 				<tr>
 					<td class="inputLabel">Address:</td>
-					<td><textarea name="address" cols="50" rows="5"><%=person.getAddress()%></textarea>
+					<td><textarea name="address" cols="50" rows="5">${editedUser.address}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -245,6 +240,12 @@ body {
 				<tr>
 					<td class="inputLabel">Mầu yêu thích:</td>
 					<td><input type="color" name="color" /></td>
+				</tr>
+				<tr>
+					<td class="inputLabel">Mức lương mong muốn:</td>
+					<td>
+						<fmt:formatNumber value="12500000" type="currency"></fmt:formatNumber>
+					</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="reset"

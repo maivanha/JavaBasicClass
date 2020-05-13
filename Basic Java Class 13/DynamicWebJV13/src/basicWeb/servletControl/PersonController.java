@@ -37,6 +37,7 @@ public class PersonController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userId = request.getParameter("userId");
+		
 		RequestDispatcher rd = null;
 		if (userId == null) {
 			try {

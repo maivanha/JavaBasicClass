@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page import="basicWeb.model.Person"%>
+
 <jsp:useBean id="userList" class="java.util.ArrayList" scope="request"></jsp:useBean>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Trang chủ</title>
+		<fmt:setLocale value="${seletedLang}"/>
+		<fmt:setBundle basename="message" var="lang"/>
+		<title><fmt:message bundle="${lang}" key="home.title" /></title>
 		<meta charset="UTF-8">
 		<style>
 			.grid-container{
@@ -49,10 +53,18 @@
 		</script> -->
 		
 		<div class="grid-container">
-			<div class="gridHeader">Header</div>
+			<div class="gridHeader">
+				<h1>Header</h1>
+				<div style="border: 1px solid red; margin: 5px; padding: 5px;">
+					<a href="changeLanguage?lang=vi_VN">Tiếng Việt</a>
+					<a href="changeLanguage?lang=en_US" 
+						style="padding-left: 10px; 
+							border-left: 1px solid black">English</a>
+				</div>
+			</div>
 			<div class="leftMenu">Left Menu</div>
 			<div class="gridBody">
-				<h1>Danh sách khách hàng</h1>
+				<h1><fmt:message key="customer.title.cusList" bundle="${lang}"/></h1>
 				<p style="font-style: calibri; background-color: gray; 
 							color: blue; text-decoration: underline;
 							max-width: 1000px;" align="center">
