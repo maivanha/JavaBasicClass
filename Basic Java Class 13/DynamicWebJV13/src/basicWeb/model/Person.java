@@ -9,9 +9,10 @@ public class Person {
 	private String username;
 	private String password;
 	private String phone;
+	private String avatar;
 	
 	public Person(String lastName, String firstName, String address, String city, String username, String password,
-			String phone) {
+			String phone, String avatar) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.address = address;
@@ -19,6 +20,7 @@ public class Person {
 		this.username = username;
 		this.password = password;
 		this.phone = phone;
+		this.setAvatar(avatar);
 	}
 	
 	@Override
@@ -78,5 +80,13 @@ public class Person {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 }

@@ -28,12 +28,12 @@ public class PersonDao {
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
 			Person p = new Person(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getString(7), rs.getString(8));
+					rs.getString(7), rs.getString(8), rs.getString(9));
 			p.setPersonId(rs.getInt("personId"));
 			mCon.closeConnection();
 			return p;
 		}
-		return new Person("", "", "", "", "", "", "");
+		return new Person("", "", "", "", "", "", "", "");
 	}
 
 	public boolean checkUserName(String userName) {
@@ -45,8 +45,8 @@ public class PersonDao {
 	public void save(Person p)
 			throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		StringBuilder sql = new StringBuilder("insert into persons (lastName,")
-				.append("firstName, address, city, username, password, phone)")
-				.append("values(?,?,?,?,?,SHA2(?, 256),?)");
+				.append("firstName, address, city, username, password, phone, avatar)")
+				.append("values(?,?,?,?,?,SHA2(?, 256),?, ?)");
 		MySQLConnection mCon = new MySQLConnection();
 		co = mCon.getCon();
 		PreparedStatement ps = co.prepareStatement(sql.toString());
@@ -57,6 +57,7 @@ public class PersonDao {
 		ps.setString(5, p.getUsername());
 		ps.setString(6, p.getPassword());
 		ps.setString(7, p.getPhone());
+		ps.setString(8, p.getAvatar());
 
 		ps.executeUpdate();
 		mCon.closeConnection();
@@ -91,7 +92,7 @@ public class PersonDao {
 		Person p = null;
 		while (rs.next()) {
 			p = new Person(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
-					rs.getString(7), rs.getString(8));
+					rs.getString(7), rs.getString(8), rs.getString(9));
 			p.setPersonId(rs.getInt("personId"));
 
 			pers.add(p);

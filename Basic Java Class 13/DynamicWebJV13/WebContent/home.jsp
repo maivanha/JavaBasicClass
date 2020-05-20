@@ -112,6 +112,7 @@
 							<tr>
 								<th class="tblHeader">STT</th>
 								<th class="tblHeader">Họ tên</th>
+								<th class="tblHeader">avatar</th>
 								<th class="tblHeader">Số ĐT</th>
 								<th class="tblHeader">Địa chỉ</th>
 								<th class="tblHeader">#</th>
@@ -124,6 +125,10 @@
 							<tr>
 								<td class="cell"><%= per.getPersonId() %></td>
 								<td class="cell"><%= per.getLastName() + " " + per.getFirstName() %></td>
+								<td class="cell">
+									<img alt="anh dai dien" src="./imgs/<%=per.getAvatar()%>"
+									width=100>
+								</td>
 								<td class="cell"><%= per.getPhone() %></td>
 								<td class="cell"><%= per.getAddress() %></td>
 								<td class="cell">

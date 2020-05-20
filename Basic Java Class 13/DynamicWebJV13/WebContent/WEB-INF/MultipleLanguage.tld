@@ -1,0 +1,11 @@
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>2.0</jsp-version>
+	<short-name>tld1</short-name>
+
+	<tag>
+		<name>multipleLanguage</name>
+		<tag-class>basicWeb.i18n.MultipleLanguage</tag-class>
+		<body-content>scriptless</body-content>
+	</tag>
+</taglib>
