@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>Câp nhật thông tin tài khoảnn</title>
+<script src="./jquery.min.js"></script>
+<style>
+td {
+	padding: 2px 5px;
+}
+
+h1 {
+	font-style: italic;
+}
+
+#password {
+	background-color: yellow;
+	padding-left: 10px;
+}
+
+.example {
+	color: red;
+}
+
+.inputLabel {
+	text-align: right;
+	color: blue;
+	text-transform: capitalize;
+}
+
+.inputLabel .batbuoc {
+	color: red;
+	font-weight: bolder;
+}
+
+body {
+	background-color: lightblue;
+}
+
+.formBorder {
+	max-width: 700px;
+	width: auto;
+	height: auto;
+	max-height: 1000px;
+	border-width: 2px;
+	border-color: red;
+	border-style: dotted dashed solid double;
+	margin-top: 5px;
+	margin-left: 10px;
+	border-radius: 25px;
+}
+
+.formBorder .formHeader {
+	background-image: url("./imgs/leaf.gif");
+	text-decoration: underline;
+	text-transform: uppercase;
+	font-size: 24px;
+	height: 80px;
+	border: 1px solid black;
+	line-height: 80px;
+	border-radius: 35px;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="./css/mystyle.css" />
+</head>
+<body>
+	<div class="formBorder">
+		<h1
+			style="color: blue; border: 1px solid red; padding: 5px; margin: 10px; text-align: center; text-shadow: 2px 2px 5px black;">
+			Cập nhật thông tin tài khoản</h1>
+		<h:form style="border: 1px solid blue;" name="personForm">
+			<table border="1" style="border-collapse: collapse">
+				<input type="hidden" name="personId" value="#{userAction.editedUser.personId}" />
+				<tr>
+					<td class="example inputLabel">
+						<div class="batbuoc">Firstname:</div>
+					</td>
+					<td><input batbuoc="true" inputName="Tên"
+						onchange="onchangeFunction(this)" onfocus="onfocusFunction(this)"
+						onblur="onblurFunction(this)" style="background-color: yellow;"
+						size="50" type="text" name="firstName"
+						value="#{userAction.editedUser.firstName}" /></td>
+				</tr>
+				<tr>
+					<td class="inputLabel">
+						<div class="batbuoc">LastName:</div>
+					</td>
+					<td><input batbuoc="true" inputName="Họ"
+						onchange="onchangeFunction(this)" onfocus="onfocusFunction(this)"
+						onblur="onblurFunction(this)" type="text" name="lastName"
+						value=" #{userAction.editedUser.lastName}" /></td>
+				</tr>
+				<tr>
+					<td class="example inputLabel">BirthDay:</td>
+					<td><input onfocus="onfocusFunction(this)"
+						onblur="onblurFunction(this)" type="date" name="birthday" /></td>
+				</tr>
+				<tr>
+					<td class="example inputLabel">username:</td>
+					<td><input batbuoc="true" inputName="Tên đăng nhập"
+						onfocus="onfocusFunction(this)" onblur="onblurFunction(this)"
+						type="text" name="username" value="#{userAction.editedUser.username}" /></td>
+				</tr>
+				<tr>
+					<td class="inputLabel">
+						<div class="batbuoc">PassWord:</div>
+					</td>
+					<td><input batbuoc="true" inputName="Mật khẩu"
+						value="#{userAction.editedUser.password}" onfocus="onfocusFunction(this)"
+						onblur="onblurFunction(this)" id="password" maxlength="20"
+						size="22" type="password" name="passWord" /></td>
+				</tr>
+				<tr>
+					<td class="inputLabel">Tỉnh/ Thành phố:</td>
+					<td><input type="text" name="city" value="#{userAction.editedUser.city}" /></td>
+				</tr>
+				<tr>
+					<td class="inputLabel">Address:</td>
+					<td><textarea name="address" cols="50" rows="5">#{userAction.editedUser.address}</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="reset" value="Nhập lại" /> 
+						<input type="submit" value="Lưu" /> 
+						<h:commandButton value="Lưu" action="#{userAction.save}" />
+					</td>
+				</tr>
+			</table>
+		</h:form>
+
+	</div>
+</body>
+</html>
