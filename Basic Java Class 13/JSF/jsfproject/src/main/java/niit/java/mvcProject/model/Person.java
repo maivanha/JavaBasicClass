@@ -1,15 +1,63 @@
 package niit.java.mvcProject.model;
 
-public class Person {
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "persons")
+public class Person implements Serializable{
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "personId")
 	private int personId;
+
+	@OneToMany(mappedBy = "person", 
+						fetch = FetchType.EAGER)
+	private Set<Orders> orders;
+	
+	public Set<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Set<Orders> orders) {
+		this.orders = orders;
+	}
+
+	@Column(name = "lastName")
 	private String lastName;
+	
+	@Column(name = "firstName")
 	private String firstName;
+	
+	@Column(name = "address")
 	private String address;
+	
+	@Column(name = "city")
 	private String city;
+	
+	@Column(name = "username")
 	private String username;
+	
+	@Column(name = "password")
 	private String password;
+	
+	@Column(name = "phone")
 	private String phone;
+	
+	@Column(name = "avatar")
 	private String avatar;
+	
+	public Person() {};
 	
 	public Person(String lastName, String firstName, String address, String city, String username, String password,
 			String phone, String avatar) {

@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import niit.java.mvcProject.dao.PersonDao;
+import niit.java.mvcProject.dao.impl.PersonDaoImpl;
 import niit.java.mvcProject.model.Person;
 
 @ManagedBean(name = "userAction", eager = true)
 public class PersonController {
 	private Person editedUser;
-	private PersonDao perDao = new PersonDao();
+	private PersonDao perDao = new PersonDaoImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,7 +34,7 @@ public class PersonController {
 			rd = request.getRequestDispatcher("./home.jsp");
 		} else {
 			try {
-				Person per = perDao.getPerById(Integer.parseInt(userId));
+				Person per = perDao.getById(Integer.parseInt(userId));
 				System.out.println(per);
 				request.setAttribute("editedUser", per);
 			} catch (Exception e) {
@@ -44,14 +45,12 @@ public class PersonController {
 		rd.forward(request, response);
 	}
 
-	public String save()
-			throws ServletException, IOException {
-
+	public String save() throws ServletException, IOException {
 		try {
 			if (editedUser.getPersonId() == 0)
 				perDao.save(editedUser);
 			else
-				perDao.update(editedUser);
+				perDao.save(editedUser);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

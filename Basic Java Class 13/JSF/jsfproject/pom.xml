@@ -11,6 +11,11 @@
 
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<hibernate.version>5.2.11.Final</hibernate.version><!-- 5.3.5.Final 5.4.14.Final -->
+		<hibernate.validator>5.4.1.Final</hibernate.validator>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -41,6 +46,18 @@
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator}</version>
 		</dependency>
 
 		<dependency>

@@ -7,13 +7,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import niit.java.mvcProject.dao.PersonDao;
+import niit.java.mvcProject.dao.impl.PersonDaoImpl;
 import niit.java.mvcProject.model.Person;
 
 @ManagedBean(name = "mainApp", eager = true)
 @RequestScoped
 public class MainApp {
 	private List<Person> perList = new ArrayList<Person>();
-	private PersonDao perDao = new PersonDao();
+	private PersonDao perDao = new PersonDaoImpl();
 	
 	public MainApp() {
 		int size = getPerList().size();
