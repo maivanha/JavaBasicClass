@@ -1,0 +1,207 @@
+<html>
+<head>
+<title>Danh sách HV</title>
+<style>
+	h1{
+		border-bottom: 1px solid red;
+		text-transform: uppercase;
+	}
+	h2 {
+		text-align: center;
+		text-transform: uppercase;
+		
+		border-weight: 1px;
+		border-color: blue;
+		border-style: double;
+		
+		padding: 5px;
+		margin: 10px;
+		
+		text-shadow: 3px 3px 5px gray;
+	}
+	
+	#studentCode {
+		background-color: yellow;
+	}
+	
+	.tbTitle {
+		text-align: right;
+		padding-right: 10px;
+		font-weight: bold;
+		text-transform: capitalize;
+	}
+	
+	.tbTitle .passWord {
+		color: red;
+	}
+	
+	form {
+		margin-left: 10px;
+	}
+	
+	div {
+		border: 1px solid gray;
+		padding: 5px 10px;
+		margin-bottom: 10px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="header">
+		Header
+	</div>
+	
+	<div id="navigationMenu">
+		Navigation menu
+	</div>
+	
+	<div id="body" style="float: left; width: 98%;">
+		<div id="leftBody" style="width: 20%; float: left; margin-right: 5px">
+			Left Menu
+		</div>
+		
+		<div id="mainBody" style="float: left; width: 54%; border: 1px solid blue; padding: 5px;">
+			<h1> Danh sách học viên </h1>
+			<table cellpadding="5" bgcolor="yellow" border=1 style="border-collapse: collapse;">
+				<caption>Danh sách lớp Java18</caption>
+				<tr>
+					<th>STT</th>
+					<th>Mã SV</th>
+					<th>Họ Tên</th>
+					<th>eMail</th>
+					<th>Khóa Học</th>
+				</tr>
+				<tr>
+					<td>01</td>
+					<td>001</td>
+					<td>Nguyễn Văn A</td>
+					<td>anguyenvan@gmail.com</td>
+					<td>JavaWeb18</td>
+				</tr>
+				<tr>
+					<td>02</td>
+					<td>002</td>
+					<td>Nguyễn Văn B</td>
+					<td>bnguyenvan@gmail.com</td>
+					<td>JavaWeb18</td>
+				</tr>
+				<tr>
+					<td rowspan="2" valign="top">03</td>
+					<td rowspan="2" valign="top">003</td>
+					<td rowspan="2" valign="top">Nguyễn Văn C</td>
+					<td>cnguyenvan@gmail.com</td>
+					<td>JavaWeb18</td>
+				</tr>
+				<tr>
+					<td>c2nguyenvan@gmail.com</td>
+					<td>JavaWeb15</td>
+				</tr>
+				<tr>
+					<td colspan="5" align="center">
+						Tổng số sinh viên: 03 Sinh viên
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="rightBody" style="float: left; width: 20%; margin-left: 5px;">
+			Right Menu
+		</div>
+		
+	</div>
+		
+	<div id="footer" style="clear: left;">
+		Footer
+	</div>
+	
+	
+	<div style="background-color: lightgrey; display: block;">
+		<span class="passWord"><h2>Thông tin học viên</h2></span>
+		<form action="#" method="post">
+			<table cellpadding="5" border=1 style="border-collapse: collapse;">
+				<tr>
+					<td class="tbTitle">Mã SV:</td>
+					<td>
+						<input type="text" name="StuCode" id="studentCode" maxlength=20 size=22 value="Nhập Mã SV">
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Họ và tên:</td>
+					<td>
+						<input type="text" name="StuName" id="studentName" maxlength=100 size=50>
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Giới tính:</td>
+					<td>
+						<input type="radio" name="StuGender" id="studentGenderMale" value="Male"> Nam
+						<input type="radio" name="StuGender" id="studentGenderFeMale" value="FeMale"> Nữ
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Ảnh thẻ:</td>
+					<td>
+						<input type="file" name="studentImage">
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Tên đăng nhập:</td>
+					<td>
+						<input type="text" name="StuUserName" id="studentUserName" maxlength=20 size=22>
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">
+						<span class="passWord">Mật khẩu đăng nhập:</span>
+					</td>
+					<td>
+						<input type="password" name="StuPassWord" id="studentPassWord" maxlength=30 size=32>
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">
+						<span class="passWord">Nhập lại mật khẩu:</span>
+					</td>
+					<td>
+						<input type="password" name="StuRePassWord" id="studentRePassWord" maxlength=30 size=32>
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Mong muốn khi tham gia:</td>
+					<td>
+						<textarea rows=5 cols="75" name="StuRePassWord" id="studentRePassWord">Mô tả mong muốn, mục tiêu nhắm đến khi tham gia khóa học
+						</textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle" style="text-decoration: underline;">Các Topics đăng ký:</td>
+					<td>
+						<input type="checkbox" value="BasicJavaWeb" name="BasicJavaWeb"> Basic Java Web
+						<input type="checkbox" value="FrameworkJavaWeb" name="BasicJavaWeb"> Framework Java Web
+					</td>
+				</tr>
+				<tr>
+					<td class="tbTitle">Lịch học:</td>
+					<td>
+						<select name="lichHoc" id="lichHoc">
+							<option value="0">Chọn một lịch học thích hợp</option>
+							<option value="1">Thứ 2 - 4 hàng tuần</option>
+							<option value="2" selected>Thứ 3 - 5 hàng tuần</option>
+							<option value="3">Thứ 5 - 7 hàng tuần</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<input type="submit" value="Lưu">
+						<input type="reset" value="Nhập Lại">
+						<button>Thoát</button>
+					</td>
+					<input type="hidden" name="editedStudentCode" value="10">
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

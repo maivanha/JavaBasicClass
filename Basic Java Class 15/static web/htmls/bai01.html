@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>HTML Bai 1</title>
+</head>
+
+<body>
+	<h1 style="color: red;">
+		Hello World !
+	</h1>
+	<div style="border: 2px solid #00a0a0; padding: 5px;">
+		<SPAN>
+			<b><i><u>Bài 01: Xây dựng ứng dụng web với html5</u></i></b>
+		<span>
+		<div style="border: 1px solid red; margin-top: 15px; float: left; width: 100%;">
+			
+			<div style="border: 1px solid blue; width: 30%; padding: 5px; float: left;">
+				<img src="../imgs/ICanNotUnderstandForYou.jpg"
+				width="90%";/>
+				<canvas id="drawST" style="border: 1px solid red; margin: 5px; width: 90%; height: 200px;">
+				
+				</canvas>
+				<script>
+					 var ca = document.getElementById("drawST");
+					 var ct = ca.getContext("2d");
+					 ct.moveTo(0,0);
+					 ct.lineTo(50, 100);
+					 ct.stroke();
+				</script>
+			</div>
+			<div style="padding-left: 10px; border: 1px solid black; width: 66%; float: right;">
+				<ul type=a>
+					<li>
+						Style: This is <sub>subScript</sub> and <sup>supScript</sup> example
+					</li>
+				
+					<li>Video:</li>
+				</ul>
+				<video style="padding-left: 30px;" width="90%" controls>
+					<source src="file:///D:/Media/Music - video/Nguyễn Hưng - Chiếc lá mùa đông - YouTube.mp4" type="video/mp4">
+					Bai: Chiec la mua dong
+				</video>
+				<ol type=a start="3">
+					<li>Table:</li>
+				</ol>
+				<table border=1 style="margin-left: 30px; width:90%; border-collapse: collapse;">
+					<caption>Danh sach mon hoc:</caption>
+					<tr>
+						<th>STT</th>
+						<th>Mon hoc</th>
+						<th>Mo ta</th>
+					</tr>
+					<tr>
+						<td rowspan="2">1</td>
+						<td>HTML5</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>CSS4</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td rowspan="2">2</td>
+						<td>JS</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>JQuery</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							Chuc ca ban hoc tap hieu qua
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+		</div>	
+		<div style="clear: left;"></div>		
+	</div>
+	
+	
+	<hr style="color: aqua;"/>
+	
+	<ADDRESS style="border: 2px solid RGB(0, 160, 160); padding: 5px;">
+		Lớp Java 15 <br/>
+		Lịch học: T4 - T7 hàng tuần </br>
+		web site tham khảo: <a href="http://www.w3schools.com">W3School</a>
+	</ADDRESS>
+	
+</body>
+
+</html>

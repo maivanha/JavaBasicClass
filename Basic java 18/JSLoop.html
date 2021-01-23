@@ -1,0 +1,141 @@
+<html>
+<head>
+	<title>Vòng lặp</title>
+	<style>
+		div {padding: 5px 15px; margin: 10px 0px; border: 1px solid blue;}
+	</style>
+</head>
+<body>
+	<script>
+		/**
+		Tính tổng N số chẵn đầu tiên, dùng while ... do
+		**/
+		function tinhTongNSoChanDauTien(){
+			nValue = document.getElementById("nValue").value;
+			n = parseInt(nValue);
+			count = 0;
+			sum = 0;
+			i = 1;
+			str = "";
+			while(count < n) {
+				if (i % 2 == 0){
+					count ++;
+					sum += i;
+					str += "Số chẵn thứ " + count + " là " + i + " sum = " + sum + "<br/>";
+				}
+				i ++;
+			}
+			document.getElementById("sumNResult").innerHTML = "Kết quả Tổng của " + n + " số chẵn đầu tiên: " + sum;
+			document.getElementById("nDetail").innerHTML = str;
+		}
+		
+		/**
+		Tính tổng N số chẵn đầu tiên, dùng do ... while
+		**/
+		function tinhTongNSoChanDauTien2(){
+			nValue = document.getElementById("nValue").value;
+			n = parseInt(nValue);
+			count = 0;
+			sum = 0;
+			i = 0;
+			str = "";
+			do {
+				i ++;
+				if (i % 2 == 0){
+					count ++;
+					sum += i;
+					str += "Số chẵn thứ " + count + " là " + i + " sum = " + sum + "<br/>";
+				}
+			} while(count < n)
+			document.getElementById("sumNResult").innerHTML = "Kết quả Tổng của " + n + " số chẵn đầu tiên: " + sum;
+			document.getElementById("nDetail").innerHTML = str;
+		}
+	
+		/**
+		Tính tổng N số chẵn đầu tiên, dùng for
+		**/		
+		function tinhTongNSoChanDauTien3(){
+			nValue = document.getElementById("nValue").value;
+			n = parseInt(nValue);
+			
+			count = 0;
+			sum = 0;
+			str = "";
+			
+			for(i = 1; count < n; i ++){
+				if (i % 2 == 0){
+					count ++;
+					sum += i;
+					str += "Số chẵn thứ " + count + " là " + i + " sum = " + sum + "<br/>";
+				}
+			}
+			
+			document.getElementById("sumNResult").innerHTML = "Kết quả Tổng của " + n + " số chẵn đầu tiên: " + sum;
+			document.getElementById("nDetail").innerHTML = str;
+		}	
+	
+		function inSoNguyenKoChiaHetChoNam(){
+			n = parseInt(document.getElementById("nPrint").value)
+			str = "";
+			
+			for(i = 1; i < n; i ++){
+				if(i % 5 == 0) continue;
+				str += i + "; "
+			}
+			
+			document.getElementById("nPrintDetail").innerHTML = str;
+		}
+	
+		/**
+		Tính tổng N số chẵn đầu tiên, dùng for và break
+		**/		
+		function tinhTongNSoChanDauTien4(){
+			nValue = document.getElementById("nValue").value;
+			n = parseInt(nValue);
+			
+			count = 0;
+			sum = 0;
+			str = "";
+			
+			for(i = 1; ; i ++){
+				if (i % 2 == 0){
+					count ++;
+					sum += i;
+					str += "Số chẵn thứ " + count + " là " + i + " sum = " + sum + "<br/>";
+					if(count >= n) break;
+				}
+			}
+			
+			document.getElementById("sumNResult").innerHTML = "Kết quả Tổng của " + n + " số chẵn đầu tiên: " + sum;
+			document.getElementById("nDetail").innerHTML = str;
+		}
+	</script>
+	
+	<h1>Vòng lặp trong JS</h1>
+	<div>
+		<h2>Bài 01:</h2>
+		Tính tổng của n số chẵn đầu tiên <br/>
+		<title>N = </title>
+		<input type="text" id="nValue">
+		<button onclick="tinhTongNSoChanDauTien4()">Tính tổng</button> <br/>
+		<div id="sumNResult">Kết quả:</div>
+		<div id="nDetail"></div>
+	</div>
+	
+	<div>
+		<h2>Bài 02</h2>
+		In ra màn hình từ 1 đến n, với n do người dùng nhập vào từ bàn phím, không in ra các số chia hết cho 5<br/>
+		<title>N = </title>
+		<input type="text" id="nPrint">
+		<button onclick="inSoNguyenKoChiaHetChoNam()">In kết quả</button> <br/>
+		<div id="resultPrint">
+			Kết quả:
+			<div id="nPrintDetail"></div>
+		</div>
+	</div>
+	
+	
+	
+	
+</body>
+</html>

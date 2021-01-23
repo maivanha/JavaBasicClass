@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>JQuery Login</title>
+<script src="./jquery.min.js"></script>
+<style>
+	.tblHeader{
+		font-style: tahoma; color: #FF895F; font-size: 24px; 
+		font-weight:bolder; padding: 5px;}
+	.cell{
+		font-style: tahoma; color: black; font-size: 16px;padding: 2px; text-align: left;}
+</style>
+</head>
+<body>
+	<div id="login"
+		style="border: 1px solid gray; width: 150px; padding: 2px; margin: 2px; cursor: pointer; 
+				background-color: lightgray; text-align: center;">
+		Login</div>
+	<div id="refreshToken"
+		style="border: 1px solid gray; width: 150px; padding: 2px; margin: 2px; cursor: pointer; 
+				background-color: lightgray; text-align: center; display:none;">
+		Refresh Token</div>
+	<div id="logout"
+		style="border: 1px solid gray; width: 150px; padding: 2px; margin: 2px; cursor: pointer; 
+				background-color: lightgray; text-align: center; display:none;">
+		Logout</div>
+	<div id="loadData"
+		style="border: 1px solid gray; width: 150px; padding: 2px; margin: 2px; cursor: pointer; 
+				background-color: lightgray; text-align: center;display: none">
+		Load Data</div>
+	<div id="userDataGrid" style="width: 95%; border: 1px solid gray; margin: 5px; padding: 5px; back-ground: lightgreen;display:none;">
+		<table border="1" id="userTable" style="border-collapse: collapse;">
+			<thead>
+				<tr>
+					<th class="tblHeader">No</th>
+					<th class="tblHeader">Code</th>
+					<th class="tblHeader">Version</th>
+					<th class="tblHeader">UserName</th>
+					<th class="tblHeader">Email</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</body>
+<script>
+	$(document).ready(function() {
+		CLIENT_ID = 'trusted-app';
+		CLIENT_SECRET = 'RnD@APRServer_2020_SecretKey_OAuthe2_JWT';
+
+		SERVICE_END_POINT = 'http://localhost:8080/aprserver/';
+		TOKEN_END_POINT = 'http://localhost:8080/aprserver/oauth/token';
+		API_END_POINT = 'http://localhost:8080/aprserver/';
+		REPORT_END_POINT = 'http://localhost/EPS.TSC.Report/ReportViewer/';
+
+		SERVICE_ACTION_USER_LIST = 'userManager/user';
+		SERVICE_ACTION_USER_CREATE = 'userManager/user/add';
+		SERVICE_ACTION_USER_INFO = 'userManager/user/';
+		SERVICE_ACTION_USER_EDIT = 'userManager/user/add';
+		SERVICE_ACTION_USER_DELETE = 'userManager/user/delete/';
+
+		SERVICE_ACTION_ROLE_LIST = 'api/roles';
+
+		JWT_ACCESS_TOKEN_KEY = 'AccessToken';
+		JWT_TOKEN_TYPE = 'JWT_TokenType';
+		JWT_TOKEN_ATVALUE = 'JWT_TokenValue';
+		JWT_OBJECT = "JWT_JSON_Object";
+		REFRESH_TOKEN ='refresh_token';
+
+		$("#loadData").click(function() {
+			var StoJWT = localStorage.getItem(JWT_ACCESS_TOKEN_KEY);
+			$.ajax({
+				url : SERVICE_END_POINT + SERVICE_ACTION_USER_LIST,
+				type : 'GET',
+				crossDomain: true,
+				headers: {
+					'Authorization': StoJWT, 
+					'Access-Control-Allow-Headers': '*'
+				},
+				success : function(data) {
+					 $("#userDataGrid").show();
+					var lastRecord;
+					$.each(data, function(i, user){
+						lastRecord = user; 
+						var newRow = 
+							'<tr '+((i % 2 == 0)?'style="background-color: lightgray;"':' ')+'>' + 
+								'<th class="cell">' + (i + 1) + '</th>' + 
+								'<th class="cell">' + user.id + '</th>' + 
+								'<th class="cell">' + user.version + '</th>' + 
+								'<th class="cell">' + user.userName + '</th>' + 
+								'<th class="cell">' + user.email + '</th>' + 
+							'</tr>';
+						$('#userTable > tbody:last-child').append(newRow);
+					});
+				},
+				error : function(e) {
+					alert(e + '-->' + e.responseText);
+				}
+			});
+		});
+
+		$("#refreshToken").click(function() {
+			var jwtType = localStorage.getItem(JWT_TOKEN_TYPE);
+			var jwtValue = localStorage.getItem(JWT_TOKEN_ATVALUE);
+			var StoJWT = localStorage.getItem(JWT_ACCESS_TOKEN_KEY);
+			var JWTObject = localStorage.getItem(JWT_OBJECT);
+			var refreshToken = localStorage.getItem(REFRESH_TOKEN);
+			var data = {
+				'grant_type':"refresh_token",
+				"client_id" : CLIENT_ID,
+				"client_secret" : CLIENT_SECRET,
+				'access_token':jwtValue,
+				"token_type": jwtType,
+				"refresh_token":  refreshToken,
+				"expires_in": 36000
+				//"refresh_token": 'Basic ' + btoa(CLIENT_ID + ":" + CLIENT_SECRET),
+				//"scope": "read write"
+			};
+					
+			$.ajax({
+				url : TOKEN_END_POINT,
+				type : 'POST',
+				crossDomain: true,
+				headers: {
+					"Content-type": "application/x-www-form-urlencoded; charset=utf-8",
+					'Authorization': 'Basic ' + btoa(CLIENT_ID + ":" + CLIENT_SECRET)
+				},
+				//contentType : 'application/x-www-form-urlencoded',
+				data : data,
+				success : function(result) {
+					var oldAccessToken = localStorage.getItem(JWT_ACCESS_TOKEN_KEY);
+					var newAccessToken = result.token_type + ' ' + result.access_token;
+					alert(oldAccessToken + '\n\n\n\n' + newAccessToken);
+					localStorage.setItem(JWT_ACCESS_TOKEN_KEY, result.token_type + ' ' + result.access_token);
+					localStorage.setItem(REFRESH_TOKEN, result.refresh_token);
+					 $("#loadData").show();
+					 $("#logout").show();
+					 $("#login").hide();
+				},
+				error : function(e) {
+					alert(e + '-->' + e.responseText);
+				}
+			});
+
+		});
+
+		$("#login").click(function() {
+			var data = {
+				"grant_type" : "password",
+				"username" : "quyetpt",
+				"password" : "Ab123456@",
+				"client_id" : CLIENT_ID,
+				"client_secret" : CLIENT_SECRET
+			};
+
+			$.ajax({
+				url : TOKEN_END_POINT,
+				type : 'POST',
+				crossDomain: true,
+				headers: { 
+					//'Content-Type':'application/x-www-form-urlencoded'
+					'Authorization': 'Basic ' + btoa(CLIENT_ID + ":" + CLIENT_SECRET)
+						//'Basic dHJ1c3RlZC1hcHA6Um5EQEFQUlNlcnZlcl8yMDIwX1NlY3JldEtleV9PQXV0aGUyX0pXVA=='
+						// tuong duong trong java: 
+						// String pass = new String (Base64.getEncoder().encode((
+						//									"trusted-app:RnD@APRServer_2020_SecretKey_OAuthe2_JWT").getBytes()));
+						// Authorization = 'Basic ' + pass
+				},
+				//contentType : 'application/x-www-form-urlencoded',
+				data : data,
+				success : function(result) {
+					localStorage.setItem(JWT_ACCESS_TOKEN_KEY, result.token_type + ' ' + result.access_token);
+					localStorage.setItem(JWT_TOKEN_TYPE, result.token_type);
+					localStorage.setItem(JWT_TOKEN_ATVALUE, result.access_token);
+					localStorage.setItem(JWT_OBJECT, result);
+					localStorage.setItem(REFRESH_TOKEN, result.refresh_token);
+					 $("#loadData").show();
+					 $("#logout").show();
+					 $("#refreshToken").show();
+					 $("#login").hide();
+				},
+				error : function(e) {
+					alert(e + '-->' + e.responseText);
+				}
+			});
+		});
+	});
+</script>
+</html>
