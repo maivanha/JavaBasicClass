@@ -5,9 +5,10 @@ package oop;
  * @author Hà MV
  *
  */
-public class Dog extends Animal {
+public final class Dog extends Animal {
 	public static int countObject = 0;
 	public int count = 0;
+	public final int fInt = 0;
 	
 	/**
 	 * Tuổi thọ trung bình: Average Life Expectancy 
@@ -20,12 +21,9 @@ public class Dog extends Animal {
 		this.count ++;
 	}
 
-
-
 	public static int getCountObject() {
 		return countObject;
 	}
-	
 	
 	/**
 	 * Tuổi thọ trung bình: Average Life Expectancy 
@@ -38,7 +36,7 @@ public class Dog extends Animal {
 	public float getAvgLifExp(float input) {
 		return input;
 	}
-
+	
 	/*
 	 * public void setAvgLifExp(float avgLifExp) { this.avgLifExp = avgLifExp; }
 	 */

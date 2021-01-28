@@ -1,0 +1,7 @@
+Hello World!
+Our class is: Java 18
+We are learning Java-Full-Stack with java core, HTML - CSS - JS ...
+You will learn how to create a web-site using java technical 
+Good luck !!!
+
+Try hard !!!!!
